@@ -4,9 +4,9 @@ import { map } from 'rxjs/operators';
 
 
 export interface Response {
-  status?: number
-  data?: unknown
-  error?: string
+  status?: number;
+  data?: unknown;
+  error?: string;
 }
 
 @Injectable()
@@ -14,8 +14,8 @@ export class ResponseFormat<T> implements NestInterceptor<T, Response> {
   intercept(context: ExecutionContext, next: CallHandler): Observable<Response> {
     return next.handle().pipe(map((data) => ({
       status: HttpStatus.OK,
-        error: null,
-        data: data ?? null
+      error: null,
+      data: data ?? null,
     })));
   }
 }
