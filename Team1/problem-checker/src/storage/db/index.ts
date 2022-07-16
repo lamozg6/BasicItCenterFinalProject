@@ -1,4 +1,5 @@
 import { createConnection } from 'typeorm';
+import { UserEntity } from './entities/User.entity';
 
 export class DB_API {
   public static async connect() {
@@ -6,6 +7,7 @@ export class DB_API {
       type: 'postgres',
       synchronize: true,
       entities: [
+        UserEntity,
       ],
       name: process.env.DB_CONNECTION_NAME,
       host: process.env.DB_HOST,
