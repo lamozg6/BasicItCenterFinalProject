@@ -1,9 +1,9 @@
-import { IUser_create_Args, IUserData } from '../../../common/types/user.types';
+import { IUser_create_Storage_Args, IUserData } from '../../../common/types/user.types';
 import { UserEntity } from '../../db/entities/User.entity';
 import { transform } from './transformer';
 
 
-export async function create(args: IUser_create_Args): Promise<IUserData> {
+export async function create(args: IUser_create_Storage_Args): Promise<IUserData> {
   const {
     id,
     name,
