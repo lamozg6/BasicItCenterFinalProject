@@ -7,7 +7,8 @@ import { StorageApi } from './storage';
 
     await bootstrap();
     console.info('App started');
-  } catch (error) {
+  }
+  catch (error) {
     console.error('App start error', error);
   }
 })();

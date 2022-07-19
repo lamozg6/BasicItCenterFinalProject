@@ -5,10 +5,10 @@ export class BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: 'timestamptz', nullable: false })
+  @Column({ type: 'timestamptz' })
   created_at!: Date;
 
-  @Column({ type: 'timestamptz', nullable: false })
+  @Column({ type: 'timestamptz' })
   updated_at!: Date;
 
   @Index()
