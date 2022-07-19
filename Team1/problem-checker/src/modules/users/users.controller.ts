@@ -1,10 +1,14 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User_create_ReqBody_DTO } from './dto/User.create.ReqBody.dto';
-import { User_create_ResBody_DTO } from './dto/User.create.ResBody.dto';
-import { CryptoUtils } from '../../utils';
-import { User_getById_ReqParam_DTO } from './dto/User.getById.ReqParam.dto';
-import { User_getById_ResBody_DTO } from './dto/User.getById.ResBody.dto';
+import {
+  User_create_ReqBody_DTO,
+  User_create_ResBody_DTO,
+  User_getById_ReqParam_DTO,
+  User_getById_ResBody_DTO,
+  User_delete_ReqParam_DTO,
+  User_delete_ResBody_DTO,
+} from './dto';
+
 
 @Controller('users')
 export class UsersController {
@@ -17,7 +21,12 @@ export class UsersController {
   }
 
   @Get('/:id')
-  async getById(@Param('id') args: User_getById_ReqParam_DTO): Promise<User_getById_ResBody_DTO> {
+  async getById(@Param() args: User_getById_ReqParam_DTO): Promise<User_getById_ResBody_DTO> {
     return this.usersService.getById(args);
+  }
+
+  @Delete('/:id')
+  async delete(@Param() args: User_delete_ReqParam_DTO): Promise<User_delete_ResBody_DTO> {
+    return this.usersService.delete(args);
   }
 }
