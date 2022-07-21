@@ -9,7 +9,7 @@ import {
   User_getById_ReqParam_DTO,
   User_getById_ResBody_DTO,
   User_delete_ReqParam_DTO,
-  User_delete_ResBody_DTO,
+  User_delete_ResBody_DTO, User_getMany_ReqQuery_DTO, User_getMany_ResBody_DTO,
 } from './dto';
 import { User_update_ResBody_DTO } from './dto/User.update.ResBody.dto';
 
@@ -26,6 +26,14 @@ export class UsersService {
 
   async getById(args: User_getById_ReqParam_DTO): Promise<User_getById_ResBody_DTO> {
     return StorageApi.Users.getById(args);
+  }
+
+  async getMany(args: User_getMany_ReqQuery_DTO): Promise<User_getMany_ResBody_DTO> {
+    return StorageApi.Users.getMany({
+      ...args,
+      limit: args.limit ?? 10,
+      offset: args.offset ?? 0,
+    });
   }
 
   async update(args: IUser_update_Service_Args): Promise<User_update_ResBody_DTO> {

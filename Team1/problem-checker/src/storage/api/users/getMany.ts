@@ -1,0 +1,47 @@
+import { User_getMany_ResBody_DTO } from '../../../modules/users/dto';
+import { IUser_getMany_Storage_Args } from '../../../common/types/user.types';
+import { UserEntity } from '../../db/entities/User.entity';
+import { transform } from './transformer';
+
+
+export async function getMany(args: IUser_getMany_Storage_Args): Promise<User_getMany_ResBody_DTO> {
+  const {
+    limit,
+    offset,
+    gender,
+    from_birthdate,
+  } = args;
+
+  let condition = '';
+
+  if (gender !== undefined) {
+    condition += `gender = ${gender}`;
+  }
+
+  if (from_birthdate !== undefined) {
+    condition += ` AND birthdate > ${from_birthdate}`;
+  }
+
+  if (!condition.length) {
+    condition = 'TRUE';
+  }
+
+  const count = await UserEntity.Repository.query(`
+    SELECT COUNT(*)
+    FROM users
+    WHERE ${condition}
+  `);
+
+  const result = await UserEntity.Repository.query(`
+    SELECT *
+    FROM users
+    WHERE ${condition}
+    LIMIT ${limit}
+    OFFSET ${offset}
+  `);
+
+  return {
+    users: result.map((userEntity) => transform(userEntity)),
+    count,
+  };
+}
