@@ -2,12 +2,13 @@ import { BaseEntity } from './BaseEntity.entity';
 import { Column, Entity } from 'typeorm';
 import { EUserGender } from '../../../utils/enums/UserGender.enum';
 import { generateRepo } from '../../../utils/helpers/dbUtils';
+import { DB_CONNECTION_NAME } from '../../../constants';
 
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
   public static get Repository() {
-    return generateRepo(process.env.DB_CONNECTION_NAME, this);
+    return generateRepo(DB_CONNECTION_NAME, this);
   }
 
   @Column({ type: 'varchar', length: 256 })

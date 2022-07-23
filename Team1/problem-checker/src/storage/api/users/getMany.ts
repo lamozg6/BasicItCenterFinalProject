@@ -12,25 +12,21 @@ export async function getMany(args: IUser_getMany_Storage_Args): Promise<User_ge
     from_birthdate,
   } = args;
 
-  let condition = '';
+  let condition = 'deleted_at is null';
 
   if (gender !== undefined) {
-    condition += `gender = ${gender}`;
+    condition += ` gender = ${gender}`;
   }
 
   if (from_birthdate !== undefined) {
     condition += ` AND birthdate > ${from_birthdate}`;
   }
 
-  if (!condition.length) {
-    condition = 'TRUE';
-  }
-
-  const count = await UserEntity.Repository.query(`
+  const [{ count }] = (await UserEntity.Repository.query(`
     SELECT COUNT(*)
     FROM users
     WHERE ${condition}
-  `);
+  `));
 
   const result = await UserEntity.Repository.query(`
     SELECT *

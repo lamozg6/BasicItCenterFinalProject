@@ -55,7 +55,10 @@ export interface IUser_create_ReqBody_DTO extends Omit<IUser, 'id'> {}
 export interface IUser_create_Storage_Args extends IUser {}
 
 export interface IUser_getMany_Storage_Args
-  extends IUser_getMany_ReqQuery_DTO, Storage_GetMany_ReqQuery {}
+  extends IUser_getMany_ReqQuery_DTO {
+  limit: number;
+  offset: number;
+}
 
 // service types
 export interface IUser_update_Service_Args
