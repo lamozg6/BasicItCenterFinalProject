@@ -5,6 +5,7 @@ import * as cookieParser from 'cookie-parser';
 import { json } from 'express';
 import { ExceptionsFilter } from './utils/filters/ExceptionsFilter';
 import { ResponseFormat } from './interceptors';
+import { PORT } from './constants';
 
 export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,6 @@ export async function bootstrap() {
   app.enableCors();
   app.use(json({ limit: '100mb' }));
 
-  await app.listen(process.env.SERVER_PORT);
-  console.info('App server listening on port', process.env.SERVER_PORT);
+  await app.listen(PORT);
+  console.info('App server listening on port', PORT);
 }

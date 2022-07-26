@@ -1,7 +1,8 @@
 import { IUser_update_Service_Args } from '../../../common/types/user.types';
-import { User_update_ResBody_DTO } from '../../../modules/users/dto/User.update.ResBody.dto';
+import { User_update_ResBody_DTO } from '../../../modules/users/dto';
 import { UserEntity } from '../../db/entities/User.entity';
 import { getById } from './getById';
+import { generateDateInsertPSQLCommand } from '../../../utils';
 
 
 export async function update(args: IUser_update_Service_Args): Promise<User_update_ResBody_DTO> {
@@ -9,7 +10,12 @@ export async function update(args: IUser_update_Service_Args): Promise<User_upda
 
   for (const [key, value] of Object.entries(args)) {
     if (key !== 'id') {
-      values_to_set += `${key}=${value},`;
+      if (value instanceof Date) {
+        values_to_set += `${key}= ${generateDateInsertPSQLCommand(value)},`;
+      }
+      else {
+        values_to_set += `${key}='${value}',`;
+      }
     }
   }
 

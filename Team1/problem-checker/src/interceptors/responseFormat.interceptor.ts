@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 export interface Response {
   status?: number;
   data?: unknown;
-  error?: string;
+  error?: null | string;
 }
 
 @Injectable()
