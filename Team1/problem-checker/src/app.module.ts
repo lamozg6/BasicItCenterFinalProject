@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './modules/users/users.module';
 import { UserEntity } from './storage/db/entities/User.entity';
+import { ProblemEntity } from './storage/db/entities/Problem.entity';
+import { ProblemsModule } from './modules/users/problems/problems.module.dto';
 
 @Module({
   imports: [
@@ -14,12 +16,11 @@ import { UserEntity } from './storage/db/entities/User.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      entities: [
-        UserEntity,
-      ],
+      entities: [UserEntity, ProblemEntity],
       synchronize: true,
     }),
     UsersModule,
+    ProblemsModule,
   ],
 })
 export class AppModule {}
