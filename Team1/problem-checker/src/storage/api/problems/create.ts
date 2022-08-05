@@ -1,13 +1,13 @@
 import {
-  IProblem_create_Args,
   IProblemData,
+  IProblem_create_Storage_Args,
 } from 'src/common/types/problem.types';
 import { ProblemEntity } from 'src/storage/db/entities/Problem.entity';
 import { generateDateInsertPSQLCommand } from 'src/utils/helpers/dateUtils';
 import { transform } from './transform';
 
 export async function create(
-  args: IProblem_create_Args,
+  args: IProblem_create_Storage_Args,
 ): Promise<IProblemData> {
   const { id, name, description, function_name } = args;
   await ProblemEntity.Repository.query(`
