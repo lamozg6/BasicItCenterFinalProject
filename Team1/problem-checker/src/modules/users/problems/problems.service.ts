@@ -1,13 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import {
-  IProblem_create_Args,
-  IProblem_create_Result,
+  IProblem_create_ReqBody_DTO,
+  IProblem_create_ResBody_DTO,
 } from 'src/common/types/problem.types';
 import { StorageApi } from 'src/storage';
+import { CryptoUtils } from 'src/utils';
+import {
+  Problem_delete_ReqParam_DTO,
+  Problem_delete_ResBody_DTO,
+  Problem_getById_ReqParam_DTO,
+  Problem_getById_ResBody_DTO,
+} from './dto';
 
 @Injectable()
 export class ProblemsService {
-  async create(args: IProblem_create_Args): Promise<IProblem_create_Result> {
-    return StorageApi.Problems.create({ problem: args });
+  async create(
+    args: IProblem_create_ReqBody_DTO,
+  ): Promise<IProblem_create_ResBody_DTO> {
+    const id = CryptoUtils.generateUUID();
+    return StorageApi.Problems.create({
+      id,
+      ...args,
+    });
+  }
+
+  async getById(
+    args: Problem_getById_ReqParam_DTO,
+  ): Promise<Problem_getById_ResBody_DTO> {
+    return StorageApi.Problems.getById(args);
+  }
+
+  async delete(
+    args: Problem_delete_ReqParam_DTO,
+  ): Promise<Problem_delete_ResBody_DTO> {
+    return StorageApi.Problems.deleteById(args);
   }
 }
