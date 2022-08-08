@@ -14,7 +14,7 @@ export async function getById(
     WHERE deleted_at is null AND id = '${args.id}';
   `);
 
-  if (!result.length) {
+  if (!result) {
     throw new Error(`User with id ${args.id} is not found`);
   }
 

@@ -3,7 +3,7 @@ import { Column, Entity } from 'typeorm';
 import { EUserGender } from '../../../utils/enums/UserGender.enum';
 import { generateRepo } from '../../../utils/helpers/dbUtils';
 import { DB_CONNECTION_NAME } from '../../../constants';
-
+import { ERole } from 'src/utils';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
@@ -28,4 +28,7 @@ export class UserEntity extends BaseEntity {
 
   @Column({ type: 'timestamptz' })
   birthdate: Date;
+
+  @Column({ type: 'varchar', length: 64 })
+  role: ERole;
 }

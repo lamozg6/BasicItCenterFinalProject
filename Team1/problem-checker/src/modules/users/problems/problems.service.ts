@@ -4,6 +4,7 @@ import {
   IProblem_create_ResBody_DTO,
   IProblem_update_Service_Args,
 } from 'src/common/types/problem.types';
+import { LIMIT, OFFSET } from 'src/constants';
 import { StorageApi } from 'src/storage';
 import { CryptoUtils } from 'src/utils';
 import {
@@ -39,8 +40,8 @@ export class ProblemsService {
   ): Promise<Problem_getMany_ResBody_DTO> {
     return StorageApi.Problems.getMany({
       ...args,
-      limit: args.limit ?? 10,
-      offset: args.offset ?? 0,
+      limit: args.limit ?? LIMIT,
+      offset: args.offset ?? OFFSET,
     });
   }
 
