@@ -25,4 +25,13 @@ export class Problem_create_ReqBody_DTO implements IProblem_create_ReqBody_DTO {
     title: 'function name',
   })
   function_name: string;
+
+  @FieldDef({
+    type: String,
+    required: true,
+    nullable: false,
+    is_uuid: true,
+    title: 'user_id',
+  })
+  user_id: string;
 }

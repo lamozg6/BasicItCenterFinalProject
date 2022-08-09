@@ -22,6 +22,7 @@ import {
   Problem_getMany_ReqQuery_DTO,
   Problem_getMany_ResBody_DTO,
 } from './dto';
+import { Problem_delete_ReqBody_DTO } from './dto/Problem.delete.ReqBody.dto';
 
 @Controller('problems')
 export class ProblemsController {
@@ -62,7 +63,8 @@ export class ProblemsController {
   @Delete('/:id')
   async delete(
     @Param() args: Problem_delete_ReqParam_DTO,
+    @Body() body: Problem_delete_ReqBody_DTO,
   ): Promise<Problem_delete_ResBody_DTO> {
-    return this.problemsService.delete(args);
+    return this.problemsService.delete(args, body);
   }
 }

@@ -7,6 +7,7 @@ export interface IProblem {
   name: string;
   description: string;
   function_name: string;
+  user_id: string;
 }
 
 export interface IProblemData {

@@ -25,4 +25,12 @@ export class Problem_update_ReqBody_DTO implements IProblem_update_ReqBody_DTO {
     title: 'function name',
   })
   function_name: undefined | string;
+
+  @FieldDef({
+    type: String,
+    required: true,
+    nullable: false,
+    title: 'user_id',
+  })
+  user_id?: string;
 }

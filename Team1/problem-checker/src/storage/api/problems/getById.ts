@@ -10,7 +10,7 @@ export async function getById(
 ): Promise<IProblem_getById_ResBody_DTO> {
   const result = await ProblemEntity.Repository.query(`
     SELECT * FROM problems
-    WHERE  deleted_at is null AND  id = '${args.id}';
+    WHERE deleted_at is null AND id = '${args.id}';
     `);
 
   if (!result.length) {

@@ -34,4 +34,13 @@ export class Problem_DTO implements IProblem {
     title: 'function name',
   })
   function_name: string;
+
+  @FieldDef({
+    type: String,
+    required: true,
+    nullable: false,
+    is_uuid: true,
+    title: 'user_id',
+  })
+  user_id: string;
 }

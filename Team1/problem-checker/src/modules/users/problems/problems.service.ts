@@ -16,6 +16,7 @@ import {
   Problem_getMany_ResBody_DTO,
   Problem_update_ResBody_DTO,
 } from './dto';
+import { Problem_delete_ReqBody_DTO } from './dto/Problem.delete.ReqBody.dto';
 
 @Injectable()
 export class ProblemsService {
@@ -53,7 +54,8 @@ export class ProblemsService {
 
   async delete(
     args: Problem_delete_ReqParam_DTO,
+    body: Problem_delete_ReqBody_DTO,
   ): Promise<Problem_delete_ResBody_DTO> {
-    return StorageApi.Problems.deleteById(args);
+    return StorageApi.Problems.deleteById(args, body);
   }
 }
