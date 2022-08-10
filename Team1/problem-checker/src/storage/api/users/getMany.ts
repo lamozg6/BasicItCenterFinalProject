@@ -2,6 +2,7 @@ import { User_getMany_ResBody_DTO } from '../../../modules/users/dto';
 import { IUser_getMany_Storage_Args } from '../../../common/types/user.types';
 import { UserEntity } from '../../db/entities/User.entity';
 import { transform } from './transformer';
+import { generateDateInsertPSQLCommand } from 'src/utils/helpers/dateUtils';
 
 export async function getMany(
   args: IUser_getMany_Storage_Args,
@@ -11,11 +12,13 @@ export async function getMany(
   let condition = 'deleted_at is null';
 
   if (gender !== undefined) {
-    condition += ` AND gender = ${gender}`;
+    condition += ` AND gender = '${gender}'`;
   }
 
   if (from_birthdate !== undefined) {
-    condition += ` AND birthdate > ${from_birthdate}`;
+    condition += ` AND birthdate > ${generateDateInsertPSQLCommand(
+      from_birthdate,
+    )}`;
   }
 
   const [{ count }] = await UserEntity.Repository.query(`
