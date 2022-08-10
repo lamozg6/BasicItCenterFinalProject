@@ -8,13 +8,13 @@ import { transform } from './transform';
 export async function getById(
   args: IProblem_getById_ReqParam_DTO,
 ): Promise<IProblem_getById_ResBody_DTO> {
-  const result = await ProblemEntity.Repository.query(`
+  const [result] = await ProblemEntity.Repository.query(`
     SELECT * FROM problems
     WHERE deleted_at is null AND id = '${args.id}';
     `);
 
-  if (!result.length) {
-    throw new Error(`User with id ${args.id}  is not found`);
+  if (!result) {
+    throw new Error(`Problem with id ${args.id}  is not found`);
   }
 
   return {

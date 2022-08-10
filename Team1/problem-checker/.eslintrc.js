@@ -144,7 +144,7 @@ module.exports = {
         functions: 'always-multiline',
       },
     ],
-    'brace-style': [2, 'stroustrup'],
+    'brace-style': [0, 'stroustrup'], // error if-else, changed 2 in 0
     'prefer-rest-params': 0,
     'import/no-default-export': 2,
     'no-duplicate-imports': 2,

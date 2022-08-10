@@ -11,12 +11,25 @@ export async function deleteById(
   args: IProblem_delete_ReqParam_DTO,
   body: Problem_delete_ReqBody_DTO,
 ): Promise<IProblem_delete_ResBody_DTO> {
-  const [{ role }] = await ProblemEntity.Repository.query(`
+  const [user] = await ProblemEntity.Repository.query(`
   SELECT role from users
   WHERE id = '${body.user_id}'
   `);
 
-  authtorizePermissions(role);
+  if (!user) {
+    throw new Error(`User with id ${body.user_id} is not found`);
+  }
+
+  authtorizePermissions(user.role);
+
+  const [problem] = await ProblemEntity.Repository.query(`
+    SELECT * from problems
+    WHERE deleted_at is null AND id = '${args.id}';
+  `);
+
+  if (!problem) {
+    throw new Error(`Problem with id ${args.id} is not found`);
+  }
 
   await ProblemEntity.Repository.query(`
   UPDATE problems

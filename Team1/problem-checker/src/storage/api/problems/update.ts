@@ -14,16 +14,22 @@ export async function update(
     if (key !== 'id') {
       if (key !== 'user_id') {
         values_to_set += ` ${key}='${value}',`;
-      } else user_id = value;
+      } else {
+        user_id = value;
+      }
     }
   }
 
-  const [{ role }] = await ProblemEntity.Repository.query(`
+  const [user] = await ProblemEntity.Repository.query(`
   SELECT role from users
   WHERE id = '${user_id}';
   `);
 
-  authtorizePermissions(role);
+  if (!user) {
+    throw new Error(`User with id ${user_id} is not fuund`);
+  }
+
+  authtorizePermissions(user.role);
 
   if (!values_to_set.length) {
     throw new Error('Nothing to update in request body');
