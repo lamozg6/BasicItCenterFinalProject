@@ -11,18 +11,23 @@ export async function create(
   args: IProblem_create_Storage_Args,
 ): Promise<IProblemData> {
   const { id, name, description, function_name, user_id } = args;
-  const [{ role }] = await ProblemEntity.Repository.query(`
+  const [user] = await ProblemEntity.Repository.query(`
   SELECT role from users
   WHERE id = '${args.user_id}'
   `);
 
-  authtorizePermissions(role);
+  if (!user) {
+    throw new Error(`user with id ${args.user_id} is not found`);
+  }
+
+  authtorizePermissions(user.role);
 
   await ProblemEntity.Repository.query(`
-  INSERT INTO problems(id, created_at, updated_at, deleted_at, name, description, function_name, user_id) 
-  VALUES ('${id}', ${generateDateInsertPSQLCommand(new Date())},
-   ${generateDateInsertPSQLCommand(new Date())}, null, '${name}', 
-   '${description}', '${function_name}', '${user_id}');`);
+  INSERT INTO problems(id, name, description, function_name, user_id, created_at,
+                      updated_at, deleted_at)
+  VALUES ('${id}', '${name}', '${description}', '${function_name}', '${user_id}',
+   ${generateDateInsertPSQLCommand(new Date())},
+   ${generateDateInsertPSQLCommand(new Date())}, null);`);
 
   const result = await ProblemEntity.Repository.query(`
   SELECT * FROM problems

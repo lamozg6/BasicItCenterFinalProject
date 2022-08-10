@@ -24,7 +24,7 @@ export async function getMany(
 
   const count = await ProblemEntity.Repository.query(`
   SELECT COUNT(*)
-  FROM FROM problems
+  FROM problems
   WHERE ${conditions}
   `);
 
