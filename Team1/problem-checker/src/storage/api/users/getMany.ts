@@ -35,6 +35,10 @@ export async function getMany(
     OFFSET ${offset}
   `);
 
+  if (!result.length) {
+    throw new Error('Users at your request are not found');
+  }
+
   return {
     users: result.map((userEntity) => transform(userEntity)),
     count,

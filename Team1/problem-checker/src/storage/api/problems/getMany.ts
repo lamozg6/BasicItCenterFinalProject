@@ -11,11 +11,11 @@ export async function getMany(
   let conditions = '';
 
   if (name !== undefined) {
-    conditions += `name = ${name}`;
+    conditions += `name = '${name}'`;
   }
 
   if (function_name !== undefined) {
-    conditions += ` AND function_name = ${function_name}`;
+    conditions += ` AND function_name = '${function_name}'`;
   }
 
   if (!conditions.length) {
@@ -35,6 +35,10 @@ export async function getMany(
   LIMIT ${limit}
   OFFSET ${offset}
   `);
+
+  if (!result.length) {
+    throw new Error('Problems at your request are not found');
+  }
 
   return {
     problems: result.map((problemEntity) => transform(problemEntity)),
