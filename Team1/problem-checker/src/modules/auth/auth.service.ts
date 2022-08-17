@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { IUser_register_ResBody_DTO } from 'src/common/types/user.types';
+import {
+  IUser_login_ReqBody_DTO,
+  IUser_register_ResBody_DTO,
+} from 'src/common/types/user.types';
 import { StorageApi } from 'src/storage';
 import { CryptoUtils } from 'src/utils';
 
@@ -18,8 +21,10 @@ export class AuthService {
     return StorageApi.Auth.userRegister({ id, token, ...args });
   }
 
-  async userLogin() {
-    return StorageApi.Auth.userLogin();
+  async userLogin(
+    args: IUser_login_ReqBody_DTO,
+  ): Promise<IUser_login_ReqBody_DTO> {
+    return StorageApi.Auth.userLogin(args);
   }
 
   async userLogout() {

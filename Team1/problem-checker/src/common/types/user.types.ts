@@ -69,8 +69,17 @@ export interface IUser_create_ReqBody_DTO extends Omit<IUser, 'id'> {}
 
 export interface IUser_register_ReqBody_DTO extends Omit<IUserRegister, 'id'> {}
 
+export interface IUser_login_ReqBody_DTO {
+  email: string;
+  password: string;
+}
+
 // storage types
 export interface IUser_create_Storage_Args extends IUser {}
+
+export interface IUser_login_Storage_Args extends IUser_login_ReqBody_DTO {
+  token: string;
+}
 
 export interface IUser_getMany_Storage_Args extends IUser_getMany_ReqQuery_DTO {
   limit: number;
