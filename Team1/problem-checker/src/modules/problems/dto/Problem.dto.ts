@@ -1,5 +1,5 @@
 import { IProblem } from 'src/common/types/problem.types';
-import { FieldDef } from '../../../../utils';
+import { FieldDef } from '../../../utils';
 
 export class Problem_DTO implements IProblem {
   @FieldDef({

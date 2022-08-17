@@ -2,7 +2,7 @@ import {
   IProblem_delete_ReqParam_DTO,
   IProblem_delete_ResBody_DTO,
 } from 'src/common/types/problem.types';
-import { Problem_delete_ReqBody_DTO } from 'src/modules/users/problems/dto/Problem.delete.ReqBody.dto';
+import { Problem_delete_ReqBody_DTO } from 'src/modules/problems/dto/Problem.delete.ReqBody.dto';
 import { ProblemEntity } from 'src/storage/db/entities/Problem.entity';
 import { authtorizePermissions } from 'src/utils/helpers/authtorizePermissions';
 import { generateDateInsertPSQLCommand } from 'src/utils/helpers/dateUtils';

@@ -1,5 +1,5 @@
 import { IProblem_getMany_Stotage_Args } from 'src/common/types/problem.types';
-import { Problem_getMany_ResBody_DTO } from 'src/modules/users/problems/dto';
+import { Problem_getMany_ResBody_DTO } from 'src/modules/problems/dto';
 import { ProblemEntity } from 'src/storage/db/entities/Problem.entity';
 import { transform } from './transform';
 

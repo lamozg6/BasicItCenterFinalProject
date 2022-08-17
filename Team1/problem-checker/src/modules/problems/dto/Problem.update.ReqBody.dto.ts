@@ -1,5 +1,5 @@
 import { FieldDef } from 'src/utils';
-import { IProblem_update_ReqBody_DTO } from '../../../../common/types/problem.types';
+import { IProblem_update_ReqBody_DTO } from '../../../common/types/problem.types';
 
 export class Problem_update_ReqBody_DTO implements IProblem_update_ReqBody_DTO {
   @FieldDef({

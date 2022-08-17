@@ -3,6 +3,18 @@ import { EUserGender } from '../../utils/enums/UserGender.enum';
 import { IReqParam_DTO } from './ReqParam.dto';
 import { IReqQuery_DTO } from './ReqQuery.dto';
 
+export interface IUserRegister {
+  id: string;
+  name: string;
+  surname: string;
+  username: string;
+  email: string;
+  gender: EUserGender;
+  birthdate: Date;
+  role: ERole;
+  password: string;
+}
+
 export interface IUser {
   id: string;
   name: string;
@@ -20,6 +32,10 @@ export interface IUserData {
 
 // common types
 export interface IUser_ResBody_DTO extends IUserData {}
+
+export interface IUser_register_ResBody_DTO extends IUserRegister {
+  token: string;
+}
 
 export interface IUser_create_ResBody_DTO extends IUser_ResBody_DTO {}
 
@@ -50,6 +66,8 @@ export interface IUser_delete_ResBody_DTO {}
 
 // controller types
 export interface IUser_create_ReqBody_DTO extends Omit<IUser, 'id'> {}
+
+export interface IUser_register_ReqBody_DTO extends Omit<IUserRegister, 'id'> {}
 
 // storage types
 export interface IUser_create_Storage_Args extends IUser {}

@@ -1,5 +1,5 @@
 import { IProblem_update_Service_Args } from 'src/common/types/problem.types';
-import { Problem_update_ResBody_DTO } from 'src/modules/users/problems/dto/Problem.update.ResBody.dto';
+import { Problem_update_ResBody_DTO } from 'src/modules/problems/dto/Problem.update.ResBody.dto';
 import { ProblemEntity } from 'src/storage/db/entities/Problem.entity';
 import { authtorizePermissions } from 'src/utils/helpers/authtorizePermissions';
 import { getById } from './getById';

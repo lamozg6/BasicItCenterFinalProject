@@ -31,4 +31,7 @@ export class UserEntity extends BaseEntity {
 
   @Column({ type: 'varchar', length: 64 })
   role: ERole;
+
+  @Column({ type: 'varchar', length: 64 })
+  password: string;
 }
