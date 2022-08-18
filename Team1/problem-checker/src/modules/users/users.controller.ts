@@ -1,4 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import {
   User_create_ReqBody_DTO,
@@ -14,24 +23,28 @@ import {
   User_delete_ResBody_DTO,
 } from './dto';
 
-
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async create(@Body() args: User_create_ReqBody_DTO): Promise<User_create_ResBody_DTO> {
+  async create(
+    @Body() args: User_create_ReqBody_DTO,
+  ): Promise<User_create_ResBody_DTO> {
     return this.usersService.create(args);
   }
 
   @Get('/:id')
-  async getById(@Param() args: User_getById_ReqParam_DTO): Promise<User_getById_ResBody_DTO> {
+  async getById(
+    @Param() args: User_getById_ReqParam_DTO,
+  ): Promise<User_getById_ResBody_DTO> {
     return this.usersService.getById(args);
   }
 
   @Get()
-  async getMany(@Query() args: User_getMany_ReqQuery_DTO): Promise<User_getMany_ResBody_DTO> {
+  async getMany(
+    @Query() args: User_getMany_ReqQuery_DTO,
+  ): Promise<User_getMany_ResBody_DTO> {
     return this.usersService.getMany(args);
   }
 
@@ -47,7 +60,9 @@ export class UsersController {
   }
 
   @Delete('/:id')
-  async delete(@Param() args: User_delete_ReqParam_DTO): Promise<User_delete_ResBody_DTO> {
+  async delete(
+    @Param() args: User_delete_ReqParam_DTO,
+  ): Promise<User_delete_ResBody_DTO> {
     return this.usersService.delete(args);
   }
 }

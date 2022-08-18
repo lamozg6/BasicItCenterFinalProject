@@ -23,7 +23,7 @@ export async function userRegister(
   await UserEntity.Repository.query(`
   INSERT INTO users(id, created_at, updated_at, deleted_at, name, surname, username,
     email, gender, birthdate, role, password)
-VALUES ('${id}', ${generateDateInsertPSQLCommand(new Date())},
+  VALUES ('${id}', ${generateDateInsertPSQLCommand(new Date())},
   ${generateDateInsertPSQLCommand(new Date())}, null, '${name}',
   '${surname}', '${username}', '${email}', '${gender}',
   ${generateDateInsertPSQLCommand(birthdate)}, '${role}', '${hashPassword}');  
