@@ -1,17 +1,8 @@
-import { IUser } from '../../../common/types/user.types';
+import { IUser_register_ReqBody_DTO } from '../../../common/types/user.types';
 import { ERole, FieldDef } from '../../../utils';
 import { EUserGender } from '../../../utils/enums/UserGender.enum';
 
-export class User_DTO implements IUser {
-  @FieldDef({
-    type: String,
-    required: true,
-    nullable: false,
-    is_uuid: true,
-    title: 'User/s id',
-  })
-  id!: string;
-
+export class User_register_ReqBody_DTO implements IUser_register_ReqBody_DTO {
   @FieldDef({
     type: String,
     required: true,
@@ -70,4 +61,12 @@ export class User_DTO implements IUser {
     title: 'Role',
   })
   role: ERole;
+
+  @FieldDef({
+    type: String,
+    required: true,
+    nullable: false,
+    title: 'password',
+  })
+  password: string;
 }
