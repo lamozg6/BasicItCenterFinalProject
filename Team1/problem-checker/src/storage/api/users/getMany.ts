@@ -15,7 +15,7 @@ export async function getMany(args: IUser_getMany_Storage_Args): Promise<User_ge
   let condition = 'deleted_at is null';
 
   if (gender !== undefined) {
-    condition += ` gender = ${gender}`;
+    condition += `  gender = ${gender}`;
   }
 
   if (from_birthdate !== undefined) {
