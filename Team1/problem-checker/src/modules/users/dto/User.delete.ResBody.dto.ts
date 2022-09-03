@@ -1,5 +1,5 @@
-import { IUser_delete_ResBody_DTO } from '../../../common/types/user.types';
+import { IDelete_ResBody_DTO } from '../../../common/types/Delete.ResBody.dto';
 
 
-export class User_delete_ResBody_DTO implements IUser_delete_ResBody_DTO {
+export class User_delete_ResBody_DTO implements IDelete_ResBody_DTO {
 }
