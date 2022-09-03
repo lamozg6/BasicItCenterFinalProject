@@ -1,9 +1,9 @@
-import { Problem_getMany_ReqQuery_DTO } from "src/modules/problems/dto";
+import { ProblemGetManyReqQueryDto } from "src/modules/problems/dto";
 import { Problem_getMany_ResBody_DTO } from "src/modules/problems/dto/Problem.getMany.ResBody.dto";
 import { ProblemEntity } from "src/storage/db/entities/Problem.entity";
 import { transform } from "./transformer";
 
-export async function getMany(args:Problem_getMany_ReqQuery_DTO):Promise<Problem_getMany_ResBody_DTO>{
+export async function getMany(args:ProblemGetManyReqQueryDto):Promise<Problem_getMany_ResBody_DTO>{
     const{
        limit,
        offset,
