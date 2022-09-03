@@ -1,10 +1,10 @@
-import { IUser_create_Storage_Args, IUserData } from '../../../common/types/user.types';
+import { IUser_create_Storage_Args, IUser_ResBody_DTO } from '../../../common/types/user.types';
 import { UserEntity } from '../../db/entities/User.entity';
 import { transform } from './transformer';
 import { generateDateInsertPSQLCommand } from '../../../utils/helpers/dateUtils';
 
 
-export async function create(args: IUser_create_Storage_Args): Promise<IUserData> {
+export async function create(args: IUser_create_Storage_Args): Promise<IUser_ResBody_DTO> {
   const {
     id,
     name,

@@ -1,5 +1,5 @@
 import { IUser_update_Service_Args } from '../../../common/types/user.types';
-import { User_update_ResBody_DTO } from '../../../modules/users/dto/User.update.ResBody.dto';
+import { User_update_ResBody_DTO } from '../../../modules/users/dto';
 import { UserEntity } from '../../db/entities/User.entity';
 import { getById } from './getById';
 import { generateDateInsertPSQLCommand } from '../../../utils/helpers/dateUtils';
