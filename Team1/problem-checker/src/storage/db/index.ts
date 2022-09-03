@@ -1,5 +1,7 @@
 import { createConnection } from 'typeorm';
 import { UserEntity } from './entities/User.entity';
+import { TestEntity } from './entities/Test.entity';
+import { ProblemEntity } from './entities/Problem.entity';
 
 export class DB_API {
   public static async connect() {
@@ -8,6 +10,8 @@ export class DB_API {
       synchronize: true,
       entities: [
         UserEntity,
+        TestEntity,
+        ProblemEntity,
       ],
       name: process.env.DB_CONNECTION_NAME,
       host: process.env.DB_HOST,
