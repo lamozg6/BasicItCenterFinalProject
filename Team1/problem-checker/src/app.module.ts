@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './modules/users/users.module';
 import { UserEntity } from './storage/db/entities/User.entity';
+import { TestsModule } from './modules/tests/tests.module';
+import { TestEntity } from './storage/db/entities/Test.entity';
 import { ProblemEntity } from './storage/db/entities/Problem.entity';
 import { ProblemsModule } from './modules/problems/problems.module';
 
@@ -18,11 +20,13 @@ import { ProblemsModule } from './modules/problems/problems.module';
       database: process.env.DB_NAME,
       entities: [
         UserEntity,
-        ProblemEntity
+        TestEntity,
+        ProblemEntity,
       ],
       synchronize: true,
     }),
     UsersModule,
+    TestsModule,
     ProblemsModule,
   ],
 })
