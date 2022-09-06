@@ -3,4 +3,4 @@ export * from './ErrorTarget.enum';
 export * from './OrderDir.enum';
 export * from './ResponseStatus.enum';
 export * from './TestType.enum';
-
+export * from './OrderBy.enum';

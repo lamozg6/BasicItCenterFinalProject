@@ -15,17 +15,17 @@ export class UserEntity extends BaseEntity {
   name!: string;
 
   @Column({ type: 'varchar', length: 256 })
-  surname: string;
+  surname!: string;
 
   @Column({ type: 'varchar', length: 256, unique: true })
-  username: string;
+  username!: string;
 
   @Column({ type: 'varchar', length: 256, unique: true })
-  email: string;
+  email!: string;
 
   @Column({ type: 'varchar', length: 64 })
-  gender: EUserGender;
+  gender!: EUserGender;
 
   @Column({ type: 'timestamptz' })
-  birthdate: Date;
+  birthdate!: Date;
 }

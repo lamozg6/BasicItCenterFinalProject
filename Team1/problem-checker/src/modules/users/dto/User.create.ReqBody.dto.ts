@@ -1,9 +1,9 @@
-import { IUser_create_ReqBody_DTO } from '../../../common/types/user.types';
+import { IUser_create_ReqBody } from '../../../common/types/user.types';
 import { FieldDef } from '../../../utils';
 import { EUserGender } from '../../../utils/enums/UserGender.enum';
 
 
-export class User_create_ReqBody_DTO implements IUser_create_ReqBody_DTO {
+export class User_create_ReqBody_DTO implements IUser_create_ReqBody {
   @FieldDef({
     type: String,
     required: true,

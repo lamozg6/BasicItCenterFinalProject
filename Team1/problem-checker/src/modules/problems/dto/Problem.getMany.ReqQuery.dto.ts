@@ -1,9 +1,7 @@
-import { IUser_getMany_ReqQuery } from '../../../common/types/user.types';
-import { FieldDef } from '../../../utils';
-import { EUserGender } from '../../../utils/enums/UserGender.enum';
+import { IProblem_getMany_ReqQuery } from 'src/common/types/problem.types';
+import { EOrderBy, EOrderDir, FieldDef } from 'src/utils';
 
-
-export class User_getMany_ReqQuery_DTO implements IUser_getMany_ReqQuery {
+export class Problem_getMany_ReqQuery_DTO implements IProblem_getMany_ReqQuery {
   @FieldDef({
     type: Number,
     required: false,
@@ -32,16 +30,17 @@ export class User_getMany_ReqQuery_DTO implements IUser_getMany_ReqQuery {
     type: String,
     required: false,
     nullable: false,
-    title: 'User\'s gender',
-    enum: EUserGender,
+    title: 'Order by field',
+    enum: EOrderBy,
   })
-  gender: undefined | EUserGender;
+  order_by!: EOrderBy;
 
   @FieldDef({
-    type: Date,
+    type: String,
     required: false,
     nullable: false,
-    title: 'Users born after this date',
+    title: 'Order dir field',
+    enum: EOrderDir,
   })
-  from_birthdate: undefined | Date;
+  order_dir!: EOrderDir;
 }

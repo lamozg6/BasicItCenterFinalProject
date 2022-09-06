@@ -1,9 +1,9 @@
-import { IUser_getMany_ResBody_DTO } from '../../../common/types/user.types';
+import { IUser_getMany_ResBody } from '../../../common/types/user.types';
 import { User_DTO } from './User.dto';
 import { FieldDef } from '../../../utils';
 
 
-export class User_getMany_ResBody_DTO implements IUser_getMany_ResBody_DTO {
+export class User_getMany_ResBody_DTO implements IUser_getMany_ResBody {
   @FieldDef({
     type: User_DTO,
     required: true,

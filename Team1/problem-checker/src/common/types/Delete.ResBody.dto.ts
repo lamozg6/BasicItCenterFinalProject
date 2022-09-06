@@ -1,1 +1,1 @@
-export interface IDelete_ResBody_DTO {}
+export interface IDelete_ResBody {}

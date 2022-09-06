@@ -3,7 +3,7 @@ import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
 import { generateRepo } from '../../../utils/helpers/dbUtils';
 import { DB_CONNECTION_NAME } from '../../../constants';
 import { UserEntity } from './User.entity';
-
+import { IArgument } from 'src/common/types/problem.types';
 
 @Entity('problems')
 export class ProblemEntity extends BaseEntity {
@@ -19,9 +19,12 @@ export class ProblemEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 256 })
   name!: string;
 
-  @Column({ type: 'varchar', length: 256 })
+  @Column({ type: 'text' })
   description!: string;
 
   @Column({ type: 'text' })
-  solution!: null | string;
+  solution!: string;
+
+  @Column({ type: 'jsonb' })
+  arguments!: Array<IArgument>;
 }

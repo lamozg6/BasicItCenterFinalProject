@@ -1,9 +1,9 @@
 import { User_DTO } from './User.dto';
 import { FieldDef } from '../../../utils';
-import { IUser_ResBody_DTO } from '../../../common/types/user.types';
+import { IUser_ResBody } from '../../../common/types/user.types';
 
 
-export class User_ResBody_DTO implements IUser_ResBody_DTO {
+export class User_ResBody_DTO implements IUser_ResBody {
   @FieldDef({
     type: User_DTO,
     required: true,

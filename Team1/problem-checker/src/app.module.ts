@@ -6,6 +6,7 @@ import { UserEntity } from './storage/db/entities/User.entity';
 import { TestsModule } from './modules/tests/tests.module';
 import { TestEntity } from './storage/db/entities/Test.entity';
 import { ProblemEntity } from './storage/db/entities/Problem.entity';
+import { ProblemsModule } from './modules/problems/problems.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ProblemEntity } from './storage/db/entities/Problem.entity';
     }),
     UsersModule,
     TestsModule,
+    ProblemsModule,
   ],
 })
 export class AppModule {}
