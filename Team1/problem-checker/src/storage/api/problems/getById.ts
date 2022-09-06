@@ -1,22 +1,19 @@
-import { throwError } from "rxjs";
-import { Problem_getById_ReqParam_DTO } from "src/modules/problems/dto/Problem.getById.ReqParam.dto";
-import { Problem_getById_ResBody_DTO } from "src/modules/problems/dto/Problem.getById.ResBody.dto";
-import { ProblemEntity } from "src/storage/db/entities/Problem.entity";
-import { transform } from "./transformer";
+import { ProblemEntity } from 'src/storage/db/entities/Problem.entity';
+import { transform } from './transformer';
+import { ReqParam_DTO } from '../../../common/types/ReqParam.dto';
+import { IProblem_ResBody } from '../../../common/types/problem.types';
 
-export  async  function getById(args:Problem_getById_ReqParam_DTO):Promise<Problem_getById_ResBody_DTO>{
-     const [result] = await ProblemEntity.Repository.query(`
+export async function getById(args: ReqParam_DTO): Promise<IProblem_ResBody> {
+  const [result] = await ProblemEntity.Repository.query(`
       SELECT * FROM PROBLEMS 
-        WHERE deleted_at is null AND id = ${args.id}`
-     )
+      WHERE deleted_at is null AND id = ${args.id}
+  `);
 
-     if(!result){
-        throw Error (`${args.id}  id not found`)
-     }
+  if (!result) {
+    throw Error (`${args.id}  id not found`);
+  }
 
-     return {
-        problem: transform(result),
-     }
-
+  return {
+    problem: transform(result),
+  };
 }
-

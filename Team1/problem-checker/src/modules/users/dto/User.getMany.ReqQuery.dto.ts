@@ -1,9 +1,9 @@
-import { IUser_getMany_ReqQuery_DTO } from '../../../common/types/user.types';
+import { IUser_getMany_ReqQuery } from '../../../common/types/user.types';
 import { FieldDef } from '../../../utils';
 import { EUserGender } from '../../../utils/enums/UserGender.enum';
 
 
-export class User_getMany_ReqQuery_DTO implements IUser_getMany_ReqQuery_DTO {
+export class User_getMany_ReqQuery_DTO implements IUser_getMany_ReqQuery {
   @FieldDef({
     type: Number,
     required: false,

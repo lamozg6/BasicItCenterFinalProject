@@ -1,10 +1,9 @@
-import { User_getMany_ResBody_DTO } from '../../../modules/users/dto';
-import { IUser_getMany_Storage_Args } from '../../../common/types/user.types';
+import { IUser_getMany_ResBody, IUser_getMany_Storage_Args } from '../../../common/types/user.types';
 import { UserEntity } from '../../db/entities/User.entity';
 import { transform } from './transformer';
 
 
-export async function getMany(args: IUser_getMany_Storage_Args): Promise<User_getMany_ResBody_DTO> {
+export async function getMany(args: IUser_getMany_Storage_Args): Promise<IUser_getMany_ResBody> {
   const {
     limit,
     offset,

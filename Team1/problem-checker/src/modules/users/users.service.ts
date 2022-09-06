@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
-  IUser_create_ReqBody_DTO, IUser_ResBody_DTO,
+  IUser_create_ReqBody, IUser_ResBody,
   IUser_update_Service_Args,
 } from '../../common/types/user.types';
 import { StorageApi } from '../../storage';
@@ -15,13 +15,13 @@ import {
   User_update_ResBody_DTO,
 } from './dto';
 import { LIMIT, OFFSET } from '../../constants';
-import { IDelete_ResBody_DTO } from '../../common/types/Delete.ResBody.dto';
+import { IDelete_ResBody } from '../../common/types/Delete.ResBody.dto';
 import { ReqParam_DTO } from '../../common/types/ReqParam.dto';
 
 
 @Injectable()
 export class UsersService {
-  async create(args: IUser_create_ReqBody_DTO): Promise<IUser_ResBody_DTO> {
+  async create(args: IUser_create_ReqBody): Promise<IUser_ResBody> {
     const id = CryptoUtils.generateUUID();
     return StorageApi.Users.create({
       id,
@@ -29,7 +29,7 @@ export class UsersService {
     });
   }
 
-  async getById(args: ReqParam_DTO): Promise<IUser_ResBody_DTO> {
+  async getById(args: ReqParam_DTO): Promise<IUser_ResBody> {
     return StorageApi.Users.getById(args);
   }
 
@@ -41,11 +41,11 @@ export class UsersService {
     });
   }
 
-  async update(args: IUser_update_Service_Args): Promise<IUser_ResBody_DTO> {
+  async update(args: IUser_update_Service_Args): Promise<IUser_ResBody> {
     return StorageApi.Users.update(args);
   }
 
-  async delete(args: ReqParam_DTO): Promise<IDelete_ResBody_DTO> {
+  async delete(args: ReqParam_DTO): Promise<IDelete_ResBody> {
     return StorageApi.Users.deleteById(args);
   }
 }

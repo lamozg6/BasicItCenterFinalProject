@@ -1,9 +1,10 @@
-import { IProblem_delete_ReqParam, IProblem_delete_ResBody} from '../../../common/types/problem.types';
 import { ProblemEntity } from '../../db/entities/Problem.entity';
 import { generateDateInsertPSQLCommand } from '../../../utils/helpers/dateUtils';
+import { ReqParam_DTO } from '../../../common/types/ReqParam.dto';
+import { IDelete_ResBody } from '../../../common/types/Delete.ResBody.dto';
 
 
-export async function deleteById(args: IProblem_delete_ReqParam): Promise<IProblem_delete_ResBody> {
+export async function deleteById(args: ReqParam_DTO): Promise<IDelete_ResBody> {
   await ProblemEntity.Repository.query(`
     UPDATE problems
     SET deleted_at = ${generateDateInsertPSQLCommand(new Date())}

@@ -1,6 +1,6 @@
 import { FieldDef } from 'src/utils';
-import { IArgument, IProblem } from '../../../common/types/problem.types';
-import { Argument } from './arguments/Argument.dto';
+import { IProblem } from '../../../common/types/problem.types';
+import { Argument } from './arguments';
 
 export class Problem_DTO implements IProblem {
   @FieldDef({

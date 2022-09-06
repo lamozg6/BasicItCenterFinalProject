@@ -1,5 +1,6 @@
 import { ReqParam_DTO } from './ReqParam.dto';
-import { IReqQuery_DTO } from './ReqQuery.dto';
+import { IReqQuery } from './ReqQuery.dto';
+import { IUser_getMany_ReqQuery } from './user.types';
 
 export interface IProblem {
   id: string;
@@ -50,9 +51,15 @@ export interface ITest {
 
 export interface IProblem_create_Storage_Args extends IProblem {}
 
-export interface IProblem_getMany_ReqQuery extends IReqQuery_DTO {}
+export interface IProblem_getMany_ReqQuery extends IReqQuery {}
 
 export interface IProblem_update_ReqBody extends Partial<IProblem_create_ReqBody>  {}
 
 export interface IProblem_update_Service_Args extends
   ReqParam_DTO, IProblem_update_ReqBody {}
+
+export interface IProblem_getMany_Storage_Args
+  extends IProblem_getMany_ReqQuery {
+  limit: number;
+  offset: number;
+}

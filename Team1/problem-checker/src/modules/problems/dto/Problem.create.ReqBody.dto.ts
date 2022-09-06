@@ -1,5 +1,6 @@
 import { IArgument, IProblem_create_ReqBody } from 'src/common/types/problem.types';
 import { FieldDef } from 'src/utils';
+import { Argument } from './arguments';
 
 export class Problem_create_ReqBody_DTO implements IProblem_create_ReqBody {
   @FieldDef({
@@ -8,31 +9,31 @@ export class Problem_create_ReqBody_DTO implements IProblem_create_ReqBody {
     nullable: false,
     title: 'Problem\'s name',
   })
-  name!:string;
+  name!: string;
 
   @FieldDef({
     type: String,
     required: true,
     nullable: false,
-    title: 'Problem\'s descripiton',
+    title: 'Problem\'s description',
   })
-  description!:string;
+  description!: string;
 
   @FieldDef({
     type: String,
     required: true,
-    nullable: false,
+    nullable: true,
     title: 'Problem\'s solution',
   })
-  solution!:null | string;
+  solution!: null | string;
 
   @FieldDef({
-    type: Array,
+    type: Argument,
     required: true,
     nullable: false,
     title: 'Problem\'s arguments',
   })
-  arguments!:Array<IArgument>;
+  arguments!: Array<Argument>;
   tests;
   test_count;
 }

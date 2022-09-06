@@ -11,16 +11,15 @@ export class ProblemEntity extends BaseEntity {
   public static get Repository() {
     return generateRepo(DB_CONNECTION_NAME, this);
   }
-  @Column({ type:'varchar',length:256})
-  name!:string;
-  @Column({type:'varchar',length:256})
-    description!:string;
-    @Column({ type:'varchar',length:256})
-    solution!:string;
-    @Column({ type: 'jsonb' })
-    arguments!:Array<IArgument>; 
-    @Column({ type: 'jsonb'})
-    tests !: Array<ITest>;
-    @Column({type:Number})
-    test_count:number;
+  @Column({ type: 'varchar', length: 256 })
+  name!: string;
+
+  @Column({ type: 'text' })
+  description!: string;
+
+  @Column({ type: 'text' })
+  solution!: string;
+
+  @Column({ type: 'jsonb' })
+  arguments!: Array<IArgument>;
 }

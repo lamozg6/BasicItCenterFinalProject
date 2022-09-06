@@ -1,7 +1,7 @@
 import { IProblem_getMany_ReqQuery } from 'src/common/types/problem.types';
 import { EOrderBy, EOrderDir, FieldDef } from 'src/utils';
 
-export class ProblemGetManyReqQueryDto implements IProblem_getMany_ReqQuery {
+export class Problem_getMany_ReqQuery_DTO implements IProblem_getMany_ReqQuery {
   @FieldDef({
     type: Number,
     required: false,

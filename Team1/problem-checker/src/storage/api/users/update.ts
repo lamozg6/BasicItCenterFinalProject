@@ -1,11 +1,10 @@
-import { IUser_update_Service_Args } from '../../../common/types/user.types';
-import { User_update_ResBody_DTO } from '../../../modules/users/dto';
+import { IUser_ResBody, IUser_update_Service_Args } from '../../../common/types/user.types';
 import { UserEntity } from '../../db/entities/User.entity';
 import { getById } from './getById';
 import { generateDateInsertPSQLCommand } from '../../../utils/helpers/dateUtils';
 
 
-export async function update(args: IUser_update_Service_Args): Promise<User_update_ResBody_DTO> {
+export async function update(args: IUser_update_Service_Args): Promise<IUser_ResBody> {
   let values_to_set = '';
 
   for (const [key, value] of Object.entries(args)) {
