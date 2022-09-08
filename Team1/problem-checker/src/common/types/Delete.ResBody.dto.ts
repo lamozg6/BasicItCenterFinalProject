@@ -1,1 +1,1 @@
-export interface IDelete_ResBody {}
+export interface IDelete_ResBody{}

@@ -1,5 +1,5 @@
 import { ReqParam_DTO } from './ReqParam.dto';
-import { IReqQuery_DTO } from './ReqQuery.dto';
+import { IReqQuery } from './ReqQuery.dto';
 import { ETestType } from '../../utils';
 
 export interface ITest {
@@ -20,7 +20,7 @@ export interface ITest_getMany_ResBody_DTO {
   count: number;
 }
 
-export interface ITest_getMany_ReqQuery_DTO extends IReqQuery_DTO {
+export interface ITest_getMany_ReqQuery_DTO extends IReqQuery {
   problem_id?: string;
   type?: ETestType;
 }
